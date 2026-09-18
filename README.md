@@ -7,6 +7,8 @@ If you do not want to be affected by the latest bugs you can use one of the stab
 
 You can find some help to get started with FFGL plugin development on the [wiki](https://github.com/resolume/ffgl/wiki).
 
+If your plugin ships a native shared library of its own — ONNX Runtime, OpenCV, ffmpeg — read [bundling native dependencies on Windows](bundling-native-dependencies-windows.md). Windows binds a DLL import by its bare file name, so without care your plugin will use the host's copy of your dependency instead of the one you shipped — and a host has good reason not to let a plugin sideload a DLL it has not declared in a manifest. Dependencies you link statically are unaffected.
+
 Also more examples are available on this [repo](https://github.com/flyingrub/ffgl/tree/more/).
 
 ## Master branch changes since FFGL 2.2
