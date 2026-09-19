@@ -19,7 +19,8 @@ designs, codes, compiles and installs one from a one-line description.
    ```
    The plugin lands in `~/Documents/Resolume Arena/Extra Effects/` and Arena hot-reloads it.
 
-Manual build without Claude: `./build_generator.sh <Name> [--no-install]`.
+Manual build without Claude: `./build_generator.sh <Name> [--no-install]`, e.g.
+`./build_generator.sh LiquidPaint` installs the Liquid Paint example straight into Arena.
 Set `FFGL_BUNDLE_PREFIX` (default `com.ffgl-generators`) to change the bundle identifier prefix.
 
 ## What's added on top of the SDK
@@ -30,7 +31,9 @@ Set `FFGL_BUNDLE_PREFIX` (default `com.ffgl-generators`) to change the bundle id
 | `build_generator.sh` | Shader check, universal .bundle build, install |
 | `source/plugins/_common/GeneratorCommon.h` | Base class with Animation / Color / Background param groups, palettes, GLSL helpers |
 | `source/plugins/Template/` | Skeleton to copy for a new generator |
-| `source/plugins/Phyllotaxis/` | Full worked example |
+| `source/plugins/Phyllotaxis/` | Example: phyllotaxis (sunflower-spiral) dot field; standalone, predates the base class |
+| `source/plugins/HiddenRealms/` | Example: energetic portal ring built on `GeneratorCommon.h` (presets: Electric Gate, Storm Wall, Stargate, Solar Rift, ...) |
+| `source/plugins/LiquidPaint/` | Example: flowing marbled paint built on `GeneratorCommon.h` (presets: Acrylic Pour, Oil Slick, Wet Marble, Ink Veins, ...) |
 | `tests/shader_compile_test.cpp` | Offscreen GLSL compile check run by the build |
 | `tests/render_preview_test.cpp` | Offscreen renderer that writes PNGs of presets, for previews |
 

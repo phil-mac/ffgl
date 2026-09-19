@@ -20,7 +20,7 @@ Only the user can look at the output visually, so tell them exactly what to drag
 | SDK + all plugins | the repo root, i.e. the directory containing this `.claude/` folder (a fork of Resolume's FFGL SDK; all paths below are relative to it and every command runs from it) |
 | Shared base class, palettes, GLSL helpers | `source/plugins/_common/GeneratorCommon.h` |
 | Minimal skeleton to copy | `source/plugins/Template/` (`FFGLTemplate.h/.cpp`) |
-| Full worked example | `source/plugins/Phyllotaxis/` (standalone; predates the base class) |
+| Worked examples | `source/plugins/HiddenRealms/` and `source/plugins/LiquidPaint/` (built on the base class; copy their structure), `source/plugins/Phyllotaxis/` (standalone; predates the base class) |
 | Build + install | `build_generator.sh <Name> [--no-install]` |
 | Offscreen GLSL check (run by the build) | `tests/shader_compile_test.cpp` |
 | Where Arena loads plugins from | `~/Documents/Resolume Arena/Extra Effects/<Name>.bundle` |
@@ -34,7 +34,7 @@ anything.
 1. **Design the dials first** (in your head or a short list), then code. Aim for 15–30 parameters in
    3–5 groups. A generator with three sliders is a failure; the user wants "a lot of dials".
 2. **Copy the template**: `cp -R source/plugins/Template source/plugins/<Name>` and rename files,
-   class, `PluginInfo` name, and the **4-character plugin ID** (must be unique; `PHYL`, `TMPL` taken).
+   class, `PluginInfo` name, and the **4-character plugin ID** (must be unique; `PHYL`, `TMPL`, `HRLM`, `LQPT` taken).
 3. **Write the shader** in the `fragmentBody` string. Keep `GetFragmentShaderSource()` and
    `vertexShaderCode` exactly as in the template; the build harness includes the cpp and calls them.
 4. **Build**: `./build_generator.sh <Name>` from the repo root. Step 1 compiles the GLSL offscreen and
