@@ -16,3 +16,7 @@ build/osx/FFGLPlugins\.xcodeproj/project\.xcworkspace/xcuserdata/
 .vs
 Build/Windows/x64/Debug/
 Build/Windows/x64/Release/
+
+# generator build artifacts
+/tests/bin/
+/tests/shader_compile_test

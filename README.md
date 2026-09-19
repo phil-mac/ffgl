@@ -1,3 +1,41 @@
+# Resolume generator plugins + `/generator` Claude Code skill
+
+This is a fork of [resolume/ffgl](https://github.com/resolume/ffgl) with a small toolkit for building
+custom **Source** (generator) plugins for Resolume Arena on macOS, plus a Claude Code skill that
+designs, codes, compiles and installs one from a one-line description.
+
+## Setup
+
+1. Clone this repo (any path works):
+   ```sh
+   git clone git@github.com:phil-mac/ffgl.git && cd ffgl
+   ```
+2. Make sure the Xcode Command Line Tools are installed (`xcode-select --install`). No Xcode, CMake or
+   Homebrew needed.
+3. Open Claude Code inside the repo. The `/generator` skill is picked up automatically from
+   `.claude/skills/generator/`. Try:
+   ```
+   /generator spherical portal
+   ```
+   The plugin lands in `~/Documents/Resolume Arena/Extra Effects/` and Arena hot-reloads it.
+
+Manual build without Claude: `./build_generator.sh <Name> [--no-install]`.
+Set `FFGL_BUNDLE_PREFIX` (default `com.ffgl-generators`) to change the bundle identifier prefix.
+
+## What's added on top of the SDK
+
+| Path | Purpose |
+|---|---|
+| `.claude/skills/generator/SKILL.md` | The skill: workflow, design checklist, FFGL/GLSL gotchas |
+| `build_generator.sh` | Shader check, universal .bundle build, install |
+| `source/plugins/_common/GeneratorCommon.h` | Base class with Animation / Color / Background param groups, palettes, GLSL helpers |
+| `source/plugins/Template/` | Skeleton to copy for a new generator |
+| `source/plugins/Phyllotaxis/` | Full worked example |
+| `tests/shader_compile_test.cpp` | Offscreen GLSL compile check run by the build |
+| `tests/render_preview_test.cpp` | Offscreen renderer that writes PNGs of presets, for previews |
+
+---
+
 This is the Resolume fork of the FFGL repository. It is up to date and has Visual Studio and Xcode projects to compile 64 bit plugins that can be loaded by Resolume 7.0.3 and up.  
 
 **Note for macOS developers:** *Resolume 7.11.0 has added native ARM support. This means that on Apple Sillicon it will run as a native ARM process. Native ARM processes cannot load x86_64 based plugins. To enable your plugin to be loaded you should build it as universal build. If your Xcode is up-to-date enough you can choose to build for "Any Mac (Apple Silicon, Intel)" instead of "My Mac" in the top left corner. Please read the [apple developer documentation](https://developer.apple.com/documentation/apple-silicon/building-a-universal-macos-binary) for more information about universal builds.*
